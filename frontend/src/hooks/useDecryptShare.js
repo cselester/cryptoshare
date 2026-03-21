@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getShare, consumeShare, registerFailedAttempt } from "../utils/api";
 import { decryptText } from "../utils/crypto";
 
@@ -7,6 +7,22 @@ function useDecryptShare(id) {
   const [secret, setSecret] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [expiresAt, setExpiresAt] = useState(null);
+
+  useEffect(() => {
+    const loadShareMeta = async () => {
+      try {
+        const payload = await getShare(id);
+        setExpiresAt(payload.expires_at);
+      } catch (err) {
+        setError(err.message || "Unable to load secret.");
+      }
+    };
+
+    if (id) {
+      loadShareMeta();
+    }
+  }, [id]);
 
   const decryptSecret = async () => {
     setError("");
@@ -21,6 +37,7 @@ function useDecryptShare(id) {
       setLoading(true);
 
       const payload = await getShare(id);
+      setExpiresAt(payload.expires_at);
 
       try {
         const plainText = await decryptText(
@@ -31,7 +48,6 @@ function useDecryptShare(id) {
         );
 
         setSecret(plainText);
-
         await consumeShare(id);
       } catch {
         try {
@@ -47,14 +63,15 @@ function useDecryptShare(id) {
     }
   };
 
-  return {
+    return {
     code,
     setCode,
     secret,
     error,
     loading,
     decryptSecret,
-  };
+    expiresAt,
+    };
 }
 
 export default useDecryptShare;

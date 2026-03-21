@@ -1,5 +1,10 @@
 function SecretDisplay({ secret }) {
-  return <div className="secret-box">{secret}</div>;
+  return (
+    <div className="secret-box">
+      <strong>🔐 Decrypted Secret:</strong>
+      <div style={{ marginTop: "10px" }}>{secret}</div>
+    </div>
+  );
 }
 
 export default SecretDisplay;

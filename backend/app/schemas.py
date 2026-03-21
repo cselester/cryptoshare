@@ -18,6 +18,7 @@ class SharePayloadResponse(BaseModel):
     salt: str
     iv: str
     remaining_attempts: int
+    expires_at: str
 
 
 class ConsumeResponse(BaseModel):

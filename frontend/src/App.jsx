@@ -3,16 +3,16 @@ import Navbar from "./components/Navbar";
 import CreateShare from "./pages/CreateShare";
 import ViewShare from "./pages/ViewShare";
 
-export default function App() {
+function App() {
   return (
     <>
       <Navbar />
-      <div className="page-container">
-        <Routes>
-          <Route path="/" element={<CreateShare />} />
-          <Route path="/view/:id" element={<ViewShare />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<CreateShare />} />
+        <Route path="/s/:id" element={<ViewShare />} />
+      </Routes>
     </>
   );
 }
+
+export default App;

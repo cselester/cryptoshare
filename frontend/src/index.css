@@ -99,3 +99,35 @@ button {
 button:hover {
   background: #0ea5e9;
 }
+
+.timer {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #facc15;
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.button {
+  transition: all 0.2s ease;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.input,
+.textarea {
+  transition: border 0.2s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #38bdf8;
+}

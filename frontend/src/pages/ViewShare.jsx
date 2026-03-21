@@ -2,11 +2,12 @@ import { useParams } from "react-router-dom";
 import CodeInput from "../components/CodeInput";
 import SecretDisplay from "../components/SecretDisplay";
 import useDecryptShare from "../hooks/useDecryptShare";
+import CountdownTimer from "../components/CountdownTimer";
 
 function ViewShare() {
   const { id } = useParams();
 
-  const { code, setCode, secret, error, loading, decryptSecret } =
+  const { code, setCode, secret, error, loading, decryptSecret, expiresAt } =
     useDecryptShare(id);
 
   return (
@@ -17,6 +18,8 @@ function ViewShare() {
           Enter the 6-digit code to decrypt the secret. It will be destroyed
           after viewing.
         </p>
+
+        {expiresAt && <CountdownTimer expiresAt={expiresAt} />}
 
         <CodeInput
           code={code}

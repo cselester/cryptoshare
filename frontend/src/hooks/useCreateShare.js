@@ -26,7 +26,8 @@ function useCreateShare() {
       const encrypted = await encryptText(secret, generatedCode);
       const response = await createShare(encrypted);
 
-      const link = `${window.location.origin}/view/${response.id}`;
+      const BASE_URL = import.meta.env.VITE_APP_BASE_URL || window.location.origin;
+      const link = `${BASE_URL}/s/${response.id}`;
 
       setShareLink(link);
       setCode(generatedCode);

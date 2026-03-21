@@ -66,12 +66,13 @@ def get_share(share_id: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=403, detail="Too many attempts")
 
     return {
-        "id": share.id,
-        "ciphertext": share.ciphertext,
-        "salt": share.salt,
-        "iv": share.iv,
-        "remaining_attempts": share.max_attempts - share.attempt_count,
-    }
+    "id": share.id,
+    "ciphertext": share.ciphertext,
+    "salt": share.salt,
+    "iv": share.iv,
+    "remaining_attempts": share.max_attempts - share.attempt_count,
+    "expires_at": share.expires_at.isoformat(),
+}
 
 
 @router.post("/{share_id}/attempt", response_model=AttemptResponse)

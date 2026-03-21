@@ -39,6 +39,10 @@ function ResultBox({ link, code }) {
       <p className="note">
         For better security, send the link and code through different channels.
       </p>
+
+      <p className="note">
+        ⚠️ This secret will self-destruct after viewing or in 10 minutes.
+      </p>
     </div>
   );
 }
