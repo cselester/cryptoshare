@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel
 
 
@@ -10,6 +12,7 @@ class ShareCreate(BaseModel):
 class ShareCreateResponse(BaseModel):
     id: str
     expires_in_seconds: int
+    expires_at: datetime
 
 
 class SharePayloadResponse(BaseModel):
@@ -18,7 +21,7 @@ class SharePayloadResponse(BaseModel):
     salt: str
     iv: str
     remaining_attempts: int
-    expires_at: str
+    expires_at: datetime
 
 
 class ConsumeResponse(BaseModel):

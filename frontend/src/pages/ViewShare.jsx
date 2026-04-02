@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import CodeInput from "../components/CodeInput";
-import SecretDisplay from "../components/SecretDisplay";
+import SecretReveal from "../components/SecretReveal";
 import useDecryptShare from "../hooks/useDecryptShare";
-import CountdownTimer from "../components/CountdownTimer";
+import ShareCountdown from "../components/ShareCountdown";
 
 function ViewShare() {
   const { id } = useParams();
@@ -19,7 +19,7 @@ function ViewShare() {
           after viewing.
         </p>
 
-        {expiresAt && <CountdownTimer expiresAt={expiresAt} />}
+        {expiresAt && <ShareCountdown expiresAt={expiresAt} />}
 
         <CodeInput
           code={code}
@@ -30,7 +30,7 @@ function ViewShare() {
 
         {error && <p className="error">{error}</p>}
 
-        {secret && <SecretDisplay secret={secret} />}
+        {secret && <SecretReveal secret={secret} />}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ function useCreateShare() {
   const [secret, setSecret] = useState("");
   const [shareLink, setShareLink] = useState("");
   const [code, setCode] = useState("");
+  const [expiresAt, setExpiresAt] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -13,6 +14,7 @@ function useCreateShare() {
     setError("");
     setShareLink("");
     setCode("");
+    setExpiresAt("");
 
     if (!secret.trim()) {
       setError("Please enter secret text.");
@@ -31,6 +33,7 @@ function useCreateShare() {
 
       setShareLink(link);
       setCode(generatedCode);
+      setExpiresAt(response.expires_at);
       setSecret("");
     } catch (err) {
       setError(err.message || "Failed to create secret");
@@ -44,6 +47,7 @@ function useCreateShare() {
     setSecret,
     shareLink,
     code,
+    expiresAt,
     loading,
     error,
     createSecret,

@@ -101,9 +101,16 @@ button:hover {
 }
 
 .timer {
-  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 15px 0;
   font-size: 14px;
   color: #facc15;
+}
+
+.timer-meta {
+  color: #cbd5e1;
 }
 
 .card {

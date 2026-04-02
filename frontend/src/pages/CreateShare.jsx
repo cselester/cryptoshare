@@ -1,10 +1,18 @@
 import SecretForm from "../components/SecretForm";
-import ResultBox from "../components/ResultBox";
+import ShareResultBox from "../components/ShareResultBox";
 import useCreateShare from "../hooks/useCreateShare";
 
 function CreateShare() {
-  const { secret, setSecret, shareLink, code, loading, error, createSecret } =
-    useCreateShare();
+  const {
+    secret,
+    setSecret,
+    shareLink,
+    code,
+    expiresAt,
+    loading,
+    error,
+    createSecret,
+  } = useCreateShare();
 
   return (
     <div className="page-container">
@@ -24,7 +32,9 @@ function CreateShare() {
 
         {error && <p className="error">{error}</p>}
 
-        {shareLink && <ResultBox link={shareLink} code={code} />}
+        {shareLink && (
+          <ShareResultBox link={shareLink} code={code} expiresAt={expiresAt} />
+        )}
       </div>
     </div>
   );
