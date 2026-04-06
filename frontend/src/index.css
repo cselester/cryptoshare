@@ -24,9 +24,18 @@ a {
 }
 
 .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 22px;
   font-weight: bold;
   color: #38bdf8;
+}
+
+.navbar-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .navbar-links a {
